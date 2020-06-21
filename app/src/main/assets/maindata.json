@@ -1,0 +1,21 @@
+[
+  {
+    "name":"BroadcastReceiver",
+    "value":"广播接收者"
+  },
+
+  {
+    "name":"Service",
+    "value":"服务"
+  },
+
+  {
+    "name":"ContentProvider",
+    "value":"内容提供者"
+  },
+
+  {
+    "name":"SQLite",
+    "value":"SQLite数据库"
+  }
+]
