@@ -16,10 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-/*
- *  首页ViewModel
- *  Observable 是被观察目标（subject）对象，当它的数据发生变化，
- *  调用setChanged();notifyObserves();
+/**
+ *  @author 柯拉松
+ *  首页ViewModel,Observable 是被观察目标（subject）对象，当它的数据发生变化，调用setChanged();notifyObserves();
  */
 public class MainViewModel extends Observable {
 
@@ -36,20 +35,15 @@ public class MainViewModel extends Observable {
         peopleLabel = new ObservableInt(View.VISIBLE);
         initJsonData();
     }
-    private void initJsonData() {//解析数据
-
-        /**
-         * 注意：assets 目录下的Json文件仅供参考，实际使用可自行替换文件
-         * 关键逻辑在于循环体
-         *
-         * */
-        String JsonData = new GetJsonDataUtil().getJson(context, "maindata.json");//获取assets目录下的json文件数据
-        ArrayList<MainModel> jsonBean = parseData(JsonData);//用Gson转成实体
+    private void initJsonData() {
+        //注意：assets 目录下的Json文件仅供参考，实际使用可自行替换文件，关键逻辑在于循环体
+        String jsonData = new GetJsonDataUtil().getJson(context, "maindata.json");
+        ArrayList<MainModel> jsonBean = parseData(jsonData);
         changeMainDataSet(jsonBean);
     }
 
 
-    public ArrayList<MainModel> parseData(String result) {//Gson 解析
+    public ArrayList<MainModel> parseData(String result) {
         ArrayList<MainModel> detail = new ArrayList<>();
         try {
             JSONArray data = new JSONArray(result);

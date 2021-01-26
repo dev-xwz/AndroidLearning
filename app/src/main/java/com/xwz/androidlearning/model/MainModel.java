@@ -3,12 +3,8 @@ package com.xwz.androidlearning.model;
 import java.io.Serializable;
 
 public class MainModel implements Serializable {
-
-//    @SerializedName("name")
     private String name;
-
-//    @SerializedName("value")
-    private String value;
+    private int value;
 
     public String getName() {
         return name;
@@ -18,11 +14,11 @@ public class MainModel implements Serializable {
         this.name = name;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(int value) {
         this.value = value;
     }
 }

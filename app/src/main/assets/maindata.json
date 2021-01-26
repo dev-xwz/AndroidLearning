@@ -1,21 +1,26 @@
 [
   {
     "name":"BroadcastReceiver",
-    "value":"广播接收者"
+    "value":1
   },
 
   {
     "name":"Service",
-    "value":"服务"
+    "value":2
   },
 
   {
     "name":"ContentProvider",
-    "value":"内容提供者"
+    "value":3
   },
 
   {
     "name":"SQLite",
-    "value":"SQLite数据库"
+    "value":4
+  },
+
+  {
+    "name": "PosterShare",
+    "value": 5
   }
 ]

@@ -1,6 +1,5 @@
 package com.xwz.androidlearning.view.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -16,6 +15,10 @@ import com.xwz.androidlearning.viewmodel.ItemMainViewModel;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author 柯拉松
+ * 首页适配器
+ */
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterViewHolder> {
 
     private List<MainModel> mainModelList;
