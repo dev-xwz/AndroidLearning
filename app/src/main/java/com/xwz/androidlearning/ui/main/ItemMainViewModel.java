@@ -1,4 +1,4 @@
-package com.xwz.androidlearning.viewmodel;
+package com.xwz.androidlearning.ui.main;
 
 import android.content.Context;
 import android.view.View;
@@ -10,9 +10,7 @@ import androidx.databinding.BaseObservable;
 
 import com.bumptech.glide.Glide;
 import com.xwz.androidlearning.R;
-import com.xwz.androidlearning.custom_view.CircleImageView;
-import com.xwz.androidlearning.model.MainModel;
-import com.xwz.androidlearning.view.MainActivity;
+import com.xwz.androidlearning.widget.custom_view.CircleImageView;
 import com.xwz.androidlearning.widget.BaseBottomDialog;
 import com.xwz.androidlearning.widget.BaseDialog;
 
@@ -20,10 +18,12 @@ public class ItemMainViewModel extends BaseObservable {
 
     private final Context context;
     private MainModel mainModel;
+    private MainViewModel mainViewModel;
 
     public ItemMainViewModel(Context context, MainModel mainModel) {
         this.context = context;
         this.mainModel = mainModel;
+        this.mainViewModel = new MainViewModel(context);
     }
 
     public String getMainName() {
@@ -46,6 +46,8 @@ public class ItemMainViewModel extends BaseObservable {
                 break;
             case 5:
                 showShareDialog();
+                break;
+            case 6:
                 break;
             default:
                 break;
@@ -91,8 +93,7 @@ public class ItemMainViewModel extends BaseObservable {
         mTvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity mainActivity = new MainActivity();
-                mainActivity.savePoster(mLlPoster);
+                mainViewModel.savePoster(mLlPoster);
             }
         });
         mIvClose.setOnClickListener(new View.OnClickListener() {

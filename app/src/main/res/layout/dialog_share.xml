@@ -26,7 +26,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <com.xwz.androidlearning.custom_view.CircleImageView
+            <com.xwz.androidlearning.widget.custom_view.CircleImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@color/colorPrimaryDark"/>
@@ -48,7 +48,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <com.xwz.androidlearning.custom_view.CircleImageView
+            <com.xwz.androidlearning.widget.custom_view.CircleImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@color/colorPrimaryDark"/>
@@ -71,7 +71,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <com.xwz.androidlearning.custom_view.CircleImageView
+            <com.xwz.androidlearning.widget.custom_view.CircleImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@color/colorPrimaryDark"/>

@@ -1,4 +1,4 @@
-package com.xwz.androidlearning.util;
+package com.xwz.androidlearning.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;

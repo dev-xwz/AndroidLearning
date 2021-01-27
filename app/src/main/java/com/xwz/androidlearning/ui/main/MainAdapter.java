@@ -1,4 +1,4 @@
-package com.xwz.androidlearning.view.adapter;
+package com.xwz.androidlearning.ui.main;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xwz.androidlearning.R;
 import com.xwz.androidlearning.databinding.ItemMainBinding;
-import com.xwz.androidlearning.model.MainModel;
-import com.xwz.androidlearning.viewmodel.ItemMainViewModel;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,8 +1,9 @@
-package com.xwz.androidlearning.model;
+package com.xwz.androidlearning.ui.main;
 
 import java.io.Serializable;
 
 public class MainModel implements Serializable {
+
     private String name;
     private int value;
 

@@ -6,19 +6,50 @@
     <data>
         <variable
             name="mainViewModel"
-            type="com.xwz.androidlearning.viewmodel.MainViewModel"/>
+            type="com.xwz.androidlearning.ui.main.MainViewModel"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="更换新logo"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextPrimary"
+                android:onClick="@{mainViewModel::changeIcon}"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorDivider"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="还原旧logo"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextPrimary"
+                android:onClick="@{mainViewModel::changeDefaultIcon}"/>
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
+            app:spanCount="3"
             app:visibility="@{mainViewModel.mainRcv}"
             tools:listitem="@layout/item_main"/>
     </LinearLayout>

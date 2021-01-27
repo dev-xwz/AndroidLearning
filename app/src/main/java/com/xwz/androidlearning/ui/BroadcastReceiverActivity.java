@@ -1,4 +1,4 @@
-package com.xwz.androidlearning.view;
+package com.xwz.androidlearning.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 

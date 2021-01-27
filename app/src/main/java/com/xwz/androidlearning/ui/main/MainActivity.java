@@ -1,18 +1,13 @@
-package com.xwz.androidlearning.view;
+package com.xwz.androidlearning.ui.main;
 
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.net.Uri;
+
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,14 +16,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xwz.androidlearning.MyApplication;
 import com.xwz.androidlearning.R;
 import com.xwz.androidlearning.databinding.ActivityMainBinding;
-import com.xwz.androidlearning.view.adapter.MainAdapter;
-import com.xwz.androidlearning.viewmodel.MainViewModel;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -37,7 +27,6 @@ import java.util.Observer;
  * 首页 Observer观察者角色 唯一方法update，被观察者需要调用addObserver()方法，添加它的观察者列表
  */
 public class MainActivity extends AppCompatActivity implements Observer {
-
     public static Window getMainWindow;
     private MainViewModel mainViewModel;
     private ActivityMainBinding binding;
@@ -57,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements Observer {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             requestPermissions();
         }
+    }
+
+    public static Intent getStartIntent(Context context) {
+        return new Intent(context,MainActivity.class);
     }
 
     private void initDataBinding() {
@@ -92,22 +85,12 @@ public class MainActivity extends AppCompatActivity implements Observer {
      */
     private static final int REQUEST_STATE_CODE = 1010;
 
-    public void savePoster(LinearLayout llPoster) {
-        Bitmap screenshot;
-        screenshot = Bitmap.createBitmap(llPoster.getWidth(), llPoster.getHeight(), Bitmap.Config.RGB_565);
-        Canvas c = new Canvas(screenshot);
-        c.translate(-llPoster.getScrollX(), -llPoster.getScrollY());
-        llPoster.draw(c);
-        saveToLocal(screenshot);
-    }
-
     private void requestPermissions() {
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
             ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_STATE_CODE);
         }
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -123,46 +106,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
                 break;
             default:
                 break;
-        }
-    }
-
-    public void saveToLocal(Bitmap bitmap) {
-        ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.DISPLAY_NAME,"poster");
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/JPEG");
-        values.put(MediaStore.Images.Media.TITLE, String.valueOf(System.currentTimeMillis()).substring(0, 11) + ".jpg");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            //Android 10以上
-            values.put(MediaStore.Images.Media.RELATIVE_PATH, "DCIM/AndroidLearning");
-        } else {
-            values.put(MediaStore.Images.Media.DATA, Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath());
-        }
-        Uri external = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-        ContentResolver resolver = MyApplication.mContext.getContentResolver();
-        Uri insertUri;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            insertUri = resolver.insert(external, values);
-        } else {
-            insertUri = resolver.insert(external, new ContentValues());
-        }
-        OutputStream os = null;
-
-        if (insertUri != null) {
-            try {
-                os = resolver.openOutputStream(insertUri);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
-                bitmap.recycle();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (os != null) {
-                        os.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }

@@ -3,24 +3,24 @@
     "name":"BroadcastReceiver",
     "value":1
   },
-
   {
     "name":"Service",
     "value":2
   },
-
   {
     "name":"ContentProvider",
     "value":3
   },
-
   {
     "name":"SQLite",
     "value":4
   },
-
   {
     "name": "PosterShare",
     "value": 5
+  },
+  {
+    "name": "QrCode",
+    "value": 6
   }
 ]

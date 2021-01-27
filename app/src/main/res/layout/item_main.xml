@@ -2,38 +2,44 @@
     <data>
         <variable
             name="mainViewModel"
-            type="com.xwz.androidlearning.viewmodel.ItemMainViewModel"/>
+            type="com.xwz.androidlearning.ui.main.ItemMainViewModel"/>
     </data>
 
-
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/item_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:background="@color/shadowBlue50"
-        android:onClick="@{mainViewModel::onItemClick}"
-        android:layout_margin="0.5dp"
-        android:padding="8dp">
+        android:layout_margin="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@color/shadowBlue50"
+            android:onClick="@{mainViewModel::onItemClick}"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
 
-        <com.xwz.androidlearning.custom_view.CircleImageView
-            android:id="@+id/image_people"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/app_icon"/>
+            <com.xwz.androidlearning.widget.custom_view.CircleImageView
+                android:id="@+id/image_people"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/app_icon"/>
 
-        <TextView
-            android:id="@+id/label_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@{mainViewModel.getMainName}"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-
+            <TextView
+                android:id="@+id/label_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{mainViewModel.getMainName}"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

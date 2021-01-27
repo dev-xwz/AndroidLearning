@@ -1,4 +1,4 @@
-package com.xwz.androidlearning.custom_view;
+package com.xwz.androidlearning.widget.custom_view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -61,7 +61,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <com.xwz.androidlearning.custom_view.CircleImageView
+            <com.xwz.androidlearning.widget.custom_view.CircleImageView
                 android:id="@+id/iv_user"
                 android:layout_width="60dp"
                 android:layout_height="60dp"/>
